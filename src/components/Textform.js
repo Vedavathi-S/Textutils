@@ -1,7 +1,5 @@
 import React,{useState} from 'react'
 
-
-
 export default function Textform(props) {
     const [text, setText]=useState('');
     const handleUpClick=()=>{
@@ -16,6 +14,10 @@ export default function Textform(props) {
     const handleclear=()=>{
       let newtxt=" "
       setText(newtxt);
+    }
+    const handleclearExtra=()=>{
+      let netxt=text.split(/[ ]+/);
+      setText(netxt.join(" "));
     }
     const handleSpeak=()=>{
       window.speechSynthesis.cancel();
@@ -41,6 +43,7 @@ export default function Textform(props) {
         <button className="btn btn-primary mx-2" onClick={handlelowClick}>LowerCase</button>
         <button className="btn btn-primary mx-2" onClick={handleclear}>ClearText</button>
         <button className="btn btn-primary mx-2" type="submit" onClick={handleSpeak}>Speak</button>
+        <button className="btn btn-primary mx-2" onClick={handleclearExtra}>Clear Extra Space</button>
     </div>
     <div className="container my-3" >
     <h2>Text Summary</h2>
