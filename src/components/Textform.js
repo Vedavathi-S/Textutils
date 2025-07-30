@@ -32,11 +32,12 @@ export default function Textform(props) {
     
   return (
     <>
-    <div className='container'>
+    <div className='container'  style={{color:props.mode==='dark'?'white':'black'}} >
+        
         <h1>{props.heading}</h1>
         <div className="mb-3">
         
-        <textarea className="form-control" id="mybox" value={text} onChange={handleOnChange} rows="8"></textarea>
+        <textarea className="form-control" id="mybox" style={{backgroundColor:props.mode==='light'?'white':'grey',color:props.mode==='dark'?'white':'black'}} value={text} onChange={handleOnChange} rows="8"></textarea>
         
         </div>
         <button className="btn btn-primary mx-2" onClick={handleUpClick} >Uppercase</button>
@@ -50,7 +51,7 @@ export default function Textform(props) {
     <p>{text.split(" ").length } words, {text.length} characters</p>
     <p>{0.08*text.split(" ").length} Minutes read</p>
     <h2>Preview</h2>
-    <p>{text}</p>
+    <p>{text.length>0?text:'Write something to preview'}</p>
 
     </div>
     </>

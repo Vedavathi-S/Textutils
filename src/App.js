@@ -9,14 +9,18 @@ import Textform from './components/Textform';
 
 
 function App() {
-  const [mode,setMode]=useState('dark');
+  const [mode,setMode]=useState('light');
   const toggleMode=()=>{
-    if(mode==='light')
+    if(mode==='dark')
     {
-      setMode('dark');
+      setMode('light');
+      document.body.style.backgroundColor='white';
+      document.body.style.color = 'black';
     }
     else{
-      setMode('light');
+      setMode('dark');
+      document.body.style.backgroundColor='#042743';
+      document.body.style.color = 'white';
     }
   }
 
@@ -25,7 +29,7 @@ function App() {
       {/* Pass wrong types intentionally */}
       <Navbar title="TextUtils" aboutText="About" mode={mode} toggleMode={toggleMode}/>
       <div className="container">
-        <Textform heading="Enter your text to analyze below"/>
+        <Textform heading="Enter your text to analyze below"  mode={mode} />
       </div>
       {/* <div className="container my-5">
         <About />
