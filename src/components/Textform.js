@@ -6,24 +6,29 @@ export default function Textform(props) {
         // console.log('uppercase was clicked'+text);
         let newtxt=text.toUpperCase();
         setText(newtxt);
+        props.showalert("converted to capital","success");
     }
     const handlelowClick=()=>{
       let newtxt=text.toLowerCase();
       setText(newtxt);
+      props.showalert("converted to lower","success");
     }
     const handleclear=()=>{
       let newtxt=" "
       setText(newtxt);
+      props.showalert("cleared","success");
     }
     const handleclearExtra=()=>{
       let netxt=text.split(/[ ]+/);
       setText(netxt.join(" "));
+      props.showalert("cleared extra space","success");
     }
     const handleSpeak=()=>{
       window.speechSynthesis.cancel();
       let msg=new SpeechSynthesisUtterance(text);
       //msg.text=text;
       window.speechSynthesis.speak(msg);
+      props.showalert("Spoke","success");
     }
     const handleOnChange=(event)=>{
         // console.log('onChange is pressed');
