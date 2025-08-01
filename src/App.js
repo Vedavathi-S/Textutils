@@ -12,6 +12,7 @@ import Textform from './components/Textform';
 function App() {
   const [mode,setMode]=useState('light');
   const [alert,setAlert]=useState(null);
+  const[smode,setSmode]=useState('light');
   const showalert=(message,type)=>{
    setAlert({
     msg:message,
@@ -36,11 +37,25 @@ function App() {
       showalert('Enabled Dark mode','success');
     }
   }
-
+  const toggleSmode=()=>{
+    if(smode==='light')
+    {
+      setSmode('dark');
+      document.body.style.backgroundolor='green';
+      document.body.style.color='white'
+    }
+    else
+    {
+      setSmode('light');
+      document.body.style.backgroundolor='white';
+      document.body.style.color='black';
+    }
+  };
+  
   return (
     <>
       {/* Pass wrong types intentionally */}
-      <Navbar title="TextUtils" aboutText="About" mode={mode} toggleMode={toggleMode}/>
+      <Navbar title="TextUtils" aboutText="About" mode={mode} toggleMode={toggleMode} smode={smode} toggleSmode={toggleSmode}/>
       <div style={{ height: '50px' }}>
       <Alert alert={alert} />
     </div>
@@ -48,6 +63,7 @@ function App() {
       <div className="container">
         <Textform heading="Enter your text to analyze below" showalert={showalert} mode={mode} />
       </div>
+
       {/* <div className="container my-5">
         <About />
       </div> */}
