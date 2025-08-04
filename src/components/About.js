@@ -28,8 +28,8 @@ export default function About() {
     };
   return (
     <div>
-            <div className="accordion" id="accordionExample">
-                <h1>About Us</h1>
+        <div className="accordion" id="accordionExample">
+        <h1>About Us</h1>
         <div className="accordion-item">
             <h2 className="accordion-header">
             <button className="accordion-button" type="button" style={mystyle} data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
