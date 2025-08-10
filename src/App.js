@@ -2,16 +2,16 @@
 
 import { useState } from 'react';
 import './App.css';
-// import About from './components/About';
+import About from './components/About';
 import Navbar from './components/Navbar';
 import Alert from './components/Alert';
 import Textform from './components/Textform';
-// import {
-//   BrowserRouter as Router,
-//   Routes,
-//   Route,
-// } from "react-router-dom";
-// console.warn("PropTypes warning test");
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+} from "react-router-dom";
+console.warn("PropTypes warning test");
 
 
 function App() {
@@ -65,21 +65,21 @@ function App() {
 
   return (
     <>
-    {/* <Router> */}
+    <Router>
       <Navbar title="TextUtils" aboutText="About" mode={mode} toggleMode={toggleMode} smode={smode} toggleSmode={toggleSmode}/>
     <div style={{ height: '50px' }}>
       <Alert alert={alert} />
     </div>
 
     <div className="container my-3">
-      {/* <Routes>
+      <Routes>
         <Route exact path="/" element={<Textform heading="Enter your text to analyze below" showalert={showalert} mode={mode} />} />
-        <Route exact path="/about" element={<About />} />
-      </Routes> */}
-      <Textform heading="Enter your text to analyze below" showalert={showalert} mode={mode} />
+        <Route exact path="/about" element={<About mode={mode} />} />
+      </Routes>
+      {/* <Textform heading="Enter your text to analyze below" showalert={showalert} mode={mode} /> */}
 
     </div>
-    {/* </Router> */}
+    </Router>
 
       
     </>
