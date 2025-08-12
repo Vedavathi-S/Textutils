@@ -7,17 +7,17 @@ import Navbar from './components/Navbar';
 import Alert from './components/Alert';
 import Textform from './components/Textform';
 import {
-  BrowserRouter as Router,
+  HashRouter as Router,
   Routes,
   Route,
 } from "react-router-dom";
-console.warn("PropTypes warning test");
+//console.warn("PropTypes warning test");
 
 
 function App() {
   const [mode,setMode]=useState('light');
   const [alert,setAlert]=useState(null);
-  const[smode,setSmode]=useState('light');
+  // const[smode,setSmode]=useState('light');
   const showalert=(message,type)=>{
    setAlert({
     msg:message,
@@ -27,7 +27,19 @@ function App() {
     setAlert(null);
   },1500);
   };
-  const toggleMode=()=>{
+  const removecls=()=>{
+    document.body.classList.remove('bg-primary');
+    document.body.classList.remove('bg-light');
+    document.body.classList.remove('bg-dark');
+    document.body.classList.remove('bg-warning');
+    document.body.classList.remove('bg-success');
+    document.body.classList.remove('bg-danger');
+    
+  }
+  const toggleMode=(cls)=>{
+    removecls();
+    console.log(cls);
+    document.body.classList.add('bg-'+cls);
     if(mode==='dark')
     {
       setMode('light');
@@ -48,25 +60,12 @@ function App() {
       // },1000);  for flashing msg in a title
     }
   }
-  const toggleSmode=()=>{
-    if(smode==='light')
-    {
-      setSmode('green');
-      document.body.style.backgroundColor='green';
-      document.body.style.color='white'
-    }
-    else
-    {
-      setSmode('light');
-      document.body.style.backgroundColor='white';
-      document.body.style.color='black'
-    }
-  };
+
 
   return (
     <>
     <Router>
-      <Navbar title="TextUtils" aboutText="About" mode={mode} toggleMode={toggleMode} smode={smode} toggleSmode={toggleSmode}/>
+      <Navbar title="TextUtils" aboutText="About" mode={mode} toggleMode={toggleMode} />
     <div style={{ height: '50px' }}>
       <Alert alert={alert} />
     </div>

@@ -33,9 +33,13 @@ function Navbar(props) {
             <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
             <button className="btn btn-outline-primary" type="submit">Search</button>
           </form> */}
-          
+          <div className="d-flex">
+           <div className="bg-primary rounded mx-2" onClick={()=>{props.toggleMode('primary')}} style={{height:'35px',width:'35px',cursor:'pointer'}}></div>
+           <div className="bg-success rounded mx-2" onClick={()=>{props.toggleMode('success')}} style={{height:'35px',width:'35px',cursor:'pointer'}}></div>
+          </div>
+
           <div className={`form-check form-switch text-${props.mode==='light'?'dark':'light'}`}>
-            <input className="form-check-input" type="checkbox" onClick={props.toggleMode} role="switch" id="switchCheckDefault"/>
+            <input className="form-check-input" type="checkbox" onClick={()=>{props.toggleMode(null)}} role="switch" id="switchCheckDefault"/>
             <label className="form-check-label" htmlFor="switchCheckDefault">Dark Mode</label>
           </div>
         
