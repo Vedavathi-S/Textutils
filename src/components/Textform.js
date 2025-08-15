@@ -30,6 +30,10 @@ export default function Textform(props) {
       window.speechSynthesis.speak(msg);
       props.showalert("Spoke","success");
     }
+    const handlecopytext=()=>{
+      navigator.clipboard.writeText(text);
+      props.showalert('copied text','success');
+    }
     const handleOnChange=(event)=>{
         // console.log('onChange is pressed');
         setText(event.target.value);
@@ -50,10 +54,11 @@ export default function Textform(props) {
         <button className="btn btn-primary mx-2 my-2" disabled={text.length===0} onClick={handleclear}>ClearText</button>
         <button className="btn btn-primary mx-2 my-2"  disabled={text.length===0}type="submit" onClick={handleSpeak}>Speak</button>
         <button className="btn btn-primary mx-2 my-2" disabled={text.length===0} onClick={handleclearExtra}>Clear Extra Space</button>
+        <button className="btn btn-primary mx-2 my-2" disabled={text.length===0} onClick={handlecopytext}>Copy Text</button>
     </div>
     <div className="container my-3" >
     <h2>Text Summary</h2>
-    <p>{text.split(" ").filter((element)=>{return element.length!==0}).length } words, {text.length} characters</p>
+    <p>{text.split(/\s+/).filter((element)=>{return element.length!==0}).length } words, {text.length} characters</p>
     <p>{0.08*text.split(" ").filter((element)=>{return element.length!==0}).length} Minutes read</p>
     <h2>Preview</h2>
     <p>{text.length>0?text:'Nothing to preview'}</p>
